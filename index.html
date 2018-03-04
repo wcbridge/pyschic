@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pyschic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> -->
+</head>
+
+<body>
+    <h1>Pyschic</h1>
+
+    <div id="game">
+        <p> Guess a letter to start playing!</p>
+    </div>
+
+    <script>
+
+        var letter = ["a", "b", "c", "d", "e"];
+
+        // outcomes
+        var wins = 0;
+        var losses = 0;
+
+
+        document.onkeyup = function (event) {
+
+
+            //
+            var userGuess = event.key;
+
+            var computerPick = letter[Math.floor(Math.random() * letter.length)];
+
+            if (userGuess === computerPick) {
+                wins++
+            }
+            else {
+                losses++
+            }
+
+            // Creating a variable to hold our new HTML. Our HTML now keeps track of the user and computer guesses, and wins/losses/ties.
+            var html =
+                "<p>You chose: " + userGuess + "</p>" +
+                "<p>The computer chose: " + computerPick + "</p>" +
+                "<p>wins: " + wins + "</p>" +
+                "<p>losses: " + losses + "</p>";
+
+
+                // Set the inner HTML contents of the #game div to our html string
+                document.querySelector("#game").innerHTML = html;
+
+
+        } // closing {} of document.onkeyup = function(event)
+    </script>
+
+</body>
+
+</html>
